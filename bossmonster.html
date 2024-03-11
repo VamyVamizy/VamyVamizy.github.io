@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Monster</title>
+</head>
+
+<body>
+    <div id="gameContainer">
+
+        <div id="bossHP"></div>
+        <img src="img/Shrek.jpg" id="bossGFX">
+        <div id="playerUI">
+            <img src="img/minecraftSword.jpg" alt="minecraft sword" onclick="attack()">
+        </div>
+
+    </div>
+</body>
+
+<script>
+
+    var bossHPbox = document.getElementById("bossHP");
+
+    var bossHP_current = 10;
+    var bossHP_max = 10;
+
+    function makeHP() {
+
+        var counter = 0;
+
+        bossHPbox.innerHTML = "";
+
+        while (counter < bossHP_max) {
+            counter += 1;
+            var newHeart = document.createElement("img");
+            if(counter <= bossHP_current) {
+                newHeart.src = "img/Heart.png";
+            } else {
+                newHeart.src = "img/emptyHeart.png";
+            }
+            newHeart.width = 20;
+            bossHPbox.appendChild(newHeart);
+        }
+
+    }
+
+    makeHP();
+
+    function attack() {
+        if (bossHP_current > 1) {
+            bossHP_current -= 1;
+            makeHP();
+        } else {
+            alert("Have mercy, you monster!");
+        }
+    }
+
+</script>
+
+
+</html>

@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💀💀🎳</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Project Website</title>
+    <link id="lightSheet" rel="stylesheet" href="css/style.css">
+    <link id="darkSheet" rel="stylesheet" media="none" href="css/dark.css">
 </head>
+
 <body>
     <div id="content">
-        <h1>Free Primos</h1>
-        <p>Click the image below to get free primos🤑🤑</p>
-        <a href="GoToSchool/index.html">
-            <img src="img/Jean.jpg" alt="scammer get scammed">
-            <img src="img/HuTao.jpg" alt="scmmer get scammed">
-        </a>
+        <div id="banner">
+            <h1>My Website</h1>
+            <a href="about.html">About Me</a> |
+            <a href="gameguide.html">Game Guide</a> | 
+            <a href="#" onclick="changeSheet()">change color mode</a>
+        </div>
+
+        <div id="blogposts">
+            <div class="post">
+                <h2>About Me</h2>
+                <p>My name is Vincent and I play a variety of online games.</p>
+                <p>Click <a href="about.html">here</a> to learn more.</p>
+            </div>
+            <div class="post">
+                <h2 style="display: block;">Get To School</h2>
+                <img src="img/RPG.png" alt="Game loading screen" class="left">
+                <p>Get To School is a school project I've been working on to learn how to use RPG Maker.</p>
+                <p>Click <a href="GoToSchool/index.html">here</a> to play.</p>
+            </div>
+        </div>
     </div>
 </body>
+
+<script>
+
+    var lightMode = true;
+
+    function changeSheet() {
+        // make lightMode equal NOT lightMode
+        lightMode = !lightMode;
+        var lightSheet = document.getElementById("lightSheet")
+        var darkSheet = document.getElementById("darkSheet")
+        // if lightMode turned off, display dark stylesheet
+        if (lightMode == false) {
+            console.log("Turning dark mode on...");
+            darkSheet.media = "";
+            lightSheet.media = "none";
+        } else {
+            console.log("Turning light mode on...");
+            darkSheet.media = "none";
+            lightSheet.media = "";
+        }
+    }
+
+</script>
+
 </html>

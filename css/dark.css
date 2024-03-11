@@ -1,6 +1,7 @@
 body {
     font-family: arial, sans-serif;
-    background-color: darksalmon;
+    color: #FFFFFF;
+    background-color: rgb(104, 75, 56);
     margin: 0;
     padding: 0;
 }
@@ -8,29 +9,29 @@ body {
 #content {
     width: 60%;
     margin: auto;
-    border: 1px solid #000000;
-    background-color: aliceblue;
+    border: 1px solid #FFFFFF;
+    background-color: rgb(138, 96, 48);
 }
 
 #banner {
-    background-color: navajowhite;
+    background-color: rgb(143, 111, 63);
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     margin: 10px;
     padding: 10px;
 }
 
 #blogposts {
     margin: 10px;
-    border: 1px solid #000000;
-    background-color: crimson;
+    border: 1px solid #ffffff;
+    background-color: rgb(78, 42, 50);
 }
 
 .post {
     margin: 10px;
     padding: 10px;
-    border: 1px solid #000000;
-    background-color: coral;
+    border: 1px solid #ffffff;
+    background-color: rgb(102, 48, 28);
 }
 
 .post .left {
