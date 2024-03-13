@@ -1,5 +1,3 @@
-
-
 if (lightMode == 'false') {
     console.log("Turning dark mode on...");
     darkSheet.media = "";
