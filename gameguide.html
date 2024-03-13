@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Guide</title>
     <link rel="stylesheet" href="css/style.css">
+    <link id="darkSheet" rel="stylesheet" media="none" href="css/dark.css">
 </head>
 
 <body>
-    <div id="content">
-        <div id="banner">
-            <h1>My Website</h1>
-            <a href="about.html">About Me</a> |
-            <a href="index.html">Home Page</a>
-        </div>
 
+    <div id="banner">
+        <h1>My Website</h1>
+        <a href="about.html">About Me</a> |
+        <a href="index.html">Home Page</a> |
+        <a href="#" onclick="changeSheet(); setCookie('lightMode', lightMode, 1)">change color mode</a>
+
+    </div>
+
+    <div id="content">
         <div id="blogposts">
             <div class="post">
                 <h2>Game Guide</h2>
@@ -39,7 +43,7 @@
             </div>
             <div class="post">
                 <h2>Gallery</h2>
-                <div class="gallery">
+                <div class="imagesG">
                     <a href="img/RPG.png"><img src="img/RPG.png" alt="Game Screen"></a>
                     <a href="img/boulderPass.png"><img src="img/boulderPass.png" alt="Boulder Pass"></a>
                     <a href="img/Kitchen.png"><img src="img/Kitchen.png" alt="Kitchen"></a>
@@ -52,5 +56,32 @@
         </div>
      </div>   
 </body>
+<script src="js/cookie.js"></script>
+<script>
+    var lightMode = getCookie('lightMode');
+
+    if (lightMode == 'false') {
+        console.log("Turning dark mode on...");
+        darkSheet.media = "";
+    } else {
+        console.log("Turning light mode on...");
+        darkSheet.media = "none";
+    }
+    function changeSheet() {
+        // make lightMode equal NOT lightMode
+        lightMode = !lightMode;
+        var lightSheet = document.getElementById("lightSheet")
+        var darkSheet = document.getElementById("darkSheet")
+        // if lightMode turned off, display dark stylesheet
+        if (lightMode == false) {
+            console.log("Turning dark mode on...");
+            darkSheet.media = "";
+        } else {
+            console.log("Turning light mode on...");
+            darkSheet.media = "none";
+        }
+    }
+
+</script>
 
 </html>
