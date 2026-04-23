@@ -5,83 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Guide</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="lightSheet" rel="stylesheet" href="css/style.css">
     <link id="darkSheet" rel="stylesheet" media="none" href="css/dark.css">
+    <link rel="stylesheet" href="css/site-theme.css">
 </head>
 
-<body>
+<body class="site-page guide-page">
 
-    <div id="banner">
-        <h1>Vamy's Webpage</h1>
-        <a href="about.html">About Me</a> |
-        <a href="index.html">Home Page</a> |
-        <a href="#" onclick="changeSheet(); setCookie('lightMode', lightMode, 1)">change color mode</a>
+    <div class="page-shell">
+        <div id="banner">
+            <h1>Vamy's Webpage</h1>
+            <div class="nav-row">
+                <a href="about.html">About Me</a>
+                <a href="index.html">Home Page</a>
+                <a href="#" onclick="changeSheet(); setCookie('lightMode', lightMode, 1)">Switch Color Mode</a>
+            </div>
+        </div>
 
+        <div id="content">
+            <div class="post-grid">
+                <article class="post span-5">
+                    <h2>Game Guide</h2>
+                    <span class="tagline">Quick Start Tips</span>
+                    <p>Pay attention to suspicious blocks and room details, since many hidden treasures are tucked away in secret spots. Finding these early can speed up your progress a lot.</p>
+                    <p>Some hidden interactions only work when certain party members are with you, so revisit areas as your team grows.</p>
+                </article>
+
+                <article class="post span-7">
+                    <h2>Important Places</h2>
+                    <img src="img/Market.png" alt="Market Stall">
+                    <p>The Market Stall is where you stock up before harder fights. You can buy healing food, buffs, and even loot boxes for weapon upgrades and useful surprise items.</p>
+                    <p>Some foods grant elemental resistance and damage boosts, which can make difficult battles much easier.</p>
+                    <div class="link-grid">
+                        <a class="action-link" href="GoToSchool/index.html"><span>Play:</span> Get To School</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="post-grid" style="margin-top: 18px;">
+                <article class="post span-12">
+                    <h2>Gallery</h2>
+                    <div class="gallery-grid">
+                        <a href="img/RPG.png"><img src="img/RPG.png" alt="Game Screen"></a>
+                        <a href="img/boulderPass.png"><img src="img/boulderPass.png" alt="Boulder Pass"></a>
+                        <a href="img/Kitchen.png"><img src="img/Kitchen.png" alt="Kitchen"></a>
+                        <a href="img/Market.png"><img src="img/Market.png" alt="Market"></a>
+                        <a href="img/oneStep.png"><img src="img/oneStep.png" alt="One Step Puzzle"></a>
+                        <a href="img/riverSpot.png"><img src="img/riverSpot.png" alt="River Spot"></a>
+                    </div>
+                </article>
+            </div>
+        </div>
     </div>
-
-    <div id="content">
-        <div id="blogposts">
-            <div class="post">
-                <h2>Game Guide</h2>
-                <p>
-                    A quick guide to this, pay attention to certain blocks since many hidden treasures can be found in special blocks.
-                    This will allow to progress a lot quicker. Also, some hidden blocks will require a character to be in your party to be used.
-                </p>
-            </div>
-
-            <div class="post">
-                <h2>important places</h2>
-                <img src="img/Market.png" alt="Market Stall">
-                <p>This is the Market Stall! It is a place to buy items at like food to heal you in battle or buy lootboxes to throw your money away.
-                    certain foods can provide buffs to make you hit for more damage or immue to certain elements.
-                Lootboxes can help provide certain items like weapons for your team members. </p>
-            </div>
-
-        </div>
-        <div id="blogposts">
-            <div class="post">
-                <h2>Play My Game</h2>
-                <p>Click <a href="GoToSchool/index.html">here</a> to play.</p>
-            </div>
-            <div class="post">
-                <h2>Gallery</h2>
-                <div class="imagesG">
-                    <a href="img/RPG.png"><img src="img/RPG.png" alt="Game Screen"></a>
-                    <a href="img/boulderPass.png"><img src="img/boulderPass.png" alt="Boulder Pass"></a>
-                    <a href="img/Kitchen.png"><img src="img/Kitchen.png" alt="Kitchen"></a>
-                    <a href="img/Market.png"><img src="img/Market.png" alt="Market"></a>
-                    <a href="img/oneStep.png"><img src="img/oneStep.png" alt="One Step Puzzle"></a>
-                    <a href="img/riverSpot.png"><img src="img/riverSpot.png" alt="River Spot"></a>
-
-                </div>
-            </div>
-        </div>
-     </div>   
 </body>
 <script src="js/cookie.js"></script>
 <script>
-    var lightMode = getCookie('lightMode');
+    var lightMode = getCookie('lightMode') !== 'false';
+    var darkSheet = document.getElementById('darkSheet');
 
-    if (lightMode == 'false') {
-        console.log("Turning dark mode on...");
-        darkSheet.media = "";
-    } else {
-        console.log("Turning light mode on...");
-        darkSheet.media = "none";
-    }
-    function changeSheet() {
-        // make lightMode equal NOT lightMode
-        lightMode = !lightMode;
-        var lightSheet = document.getElementById("lightSheet")
-        var darkSheet = document.getElementById("darkSheet")
-        // if lightMode turned off, display dark stylesheet
-        if (lightMode == false) {
-            console.log("Turning dark mode on...");
-            darkSheet.media = "";
+    function applyTheme() {
+        if (lightMode === false) {
+            console.log('Turning dark mode on...');
+            darkSheet.media = '';
+            document.body.classList.add('dark-mode');
         } else {
-            console.log("Turning light mode on...");
-            darkSheet.media = "none";
+            console.log('Turning light mode on...');
+            darkSheet.media = 'none';
+            document.body.classList.remove('dark-mode');
         }
+    }
+
+    applyTheme();
+
+    function changeSheet() {
+        lightMode = !lightMode;
+        applyTheme();
     }
 
 </script>

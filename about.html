@@ -7,60 +7,64 @@
     <title>About Me</title>
     <link id="lightSheet" rel="stylesheet" href="css/style.css">
     <link id="darkSheet" rel="stylesheet" media="none" href="css/dark.css">
+    <link rel="stylesheet" href="css/site-theme.css">
 </head>
 
-<body>
-    <div id="banner">
-        <h1>Vamy's Webpage</h1>
-        <a href="index.html">Home Page</a> | 
-        <a href="gameguide.html">Game Guide</a> |
-        <a href="#" onclick="changeSheet(); setCookie('lightMode', lightMode, 1)">change color mode</a>
-    </div>
-    <div id="content">
-        <div id="blogposts">
-            <div class="post">
-                <h2>About Me</h2>
-                <p>Hello! My name is Vincent aka Vamy. I am a student learning html, javascript, and CSS coding.
-                    My hobbies include online gaming, collecting figurines, and learning random skills.</p>
-                    <img src="img/Jean.jpg" alt="Jean">
+<body class="site-page about-page">
+    <div class="page-shell">
+        <div id="banner">
+            <h1>Vamy's Webpage</h1>
+            <div class="nav-row">
+                <a href="index.html">Home Page</a>
+                <a href="gameguide.html">Game Guide</a>
+                <a href="#" onclick="changeSheet(); setCookie('lightMode', lightMode, 1)">Switch Color Mode</a>
             </div>
-            <div class="post">
-                <h2>About Get To School</h2>
-                <img src="img/RPG.png" alt="Loading Screen">
-                <p>Get To school is a school project for me to learn how to use RPG Maker.
-                    The game is about you, the Main Character, trying to make their way to school.
-                    You have to battle through dungeons and solve many puzzles to make your way to school and arrive on time.
-                    You can uncover many hidden treasures to aid you on your way to school.</p>
-                <p>Click <a href="gameguide.html"> here </a> to go to the game guide.</p>
-                <p>Click <a href="GoToSchool/index.html">here</a> to play the game.</p>
+        </div>
+        <div id="content">
+            <div id="blogposts" class="post-grid">
+                <article class="post span-5">
+                    <h2>About Me</h2>
+                    <span class="tagline">Student Creator</span>
+                    <p>Hello! My name is Vincent, also known as Vamy. I am a student learning HTML, JavaScript, and CSS.
+                        My hobbies include online gaming, collecting figurines, and picking up random new skills whenever I can.</p>
+                    <img src="img/Jean.jpg" alt="Portrait">
+                </article>
+                <article class="post span-7">
+                    <h2>About Get To School</h2>
+                    <img src="img/RPG.png" alt="Get To School loading screen">
+                    <p>Get To School is a school project where I learned how to use RPG Maker. You play as the main character trying to make it to school on time while battling through dungeons and solving puzzles along the way.</p>
+                    <p>You can also uncover hidden treasures that give you extra help during your journey.</p>
+                    <div class="link-grid">
+                        <a class="action-link" href="gameguide.html"><span>Open:</span> Game Guide</a>
+                        <a class="action-link" href="GoToSchool/index.html"><span>Play:</span> Get To School</a>
+                    </div>
+                </article>
             </div>
         </div>
     </div>
 </body>
 <script src="js/cookie.js"></script>
 <script>
-    var lightMode = getCookie('lightMode');
+    var lightMode = getCookie('lightMode') !== 'false';
+    var darkSheet = document.getElementById('darkSheet');
 
-    if (lightMode == 'false') {
-        console.log("Turning dark mode on...");
-        darkSheet.media = "";
-    } else {
-        console.log("Turning light mode on...");
-        darkSheet.media = "none";
-    }
-    function changeSheet() {
-        // make lightMode equal NOT lightMode
-        lightMode = !lightMode;
-        var lightSheet = document.getElementById("lightSheet")
-        var darkSheet = document.getElementById("darkSheet")
-        // if lightMode turned off, display dark stylesheet
-        if (lightMode == false) {
-            console.log("Turning dark mode on...");
-            darkSheet.media = "";
+    function applyTheme() {
+        if (lightMode === false) {
+            console.log('Turning dark mode on...');
+            darkSheet.media = '';
+            document.body.classList.add('dark-mode');
         } else {
-            console.log("Turning light mode on...");
-            darkSheet.media = "none";
+            console.log('Turning light mode on...');
+            darkSheet.media = 'none';
+            document.body.classList.remove('dark-mode');
         }
+    }
+
+    applyTheme();
+
+    function changeSheet() {
+        lightMode = !lightMode;
+        applyTheme();
     }
 
 </script>
